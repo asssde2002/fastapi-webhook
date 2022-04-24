@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+SQLAlchemy
+requests
+ujson
+line-bot-sdk
+fastapi-admin
+gunicorn
+psycopg2
