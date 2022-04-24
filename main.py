@@ -38,7 +38,7 @@ async def line_webhook(request: Request, db: Session = Depends(get_db)):
     
     body = await request.json()
     event = body.get('events')
-    if len(event) > 0 and type(event) == list:
+    if type(event) == list and len(event) > 0:
         event = event[0]
         line_id = event['source']['userId']
         replyToken = event['replyToken']
@@ -82,7 +82,3 @@ async def create_line_channel(request: Request, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(line_channel)
     return line_channel
-
-
-if __name__ == '__main__':
-    uvicorn.run("main:app", host="localhost", port=5000, reload=True)
